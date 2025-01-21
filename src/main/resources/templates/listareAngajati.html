@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Angajaților</title>
+    <link rel="stylesheet" type="text/css" href="/listare.css">
+    <script type="text/javascript">
+        function confirmDelete(event) {
+
+            event.preventDefault();
+            var confirmDelete = confirm("Sigur vrei să ștergi acest angajat?");
+            if (confirmDelete) {
+                event.target.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>Lista Angajaților</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Specializare</th>
+        <th>Email</th>
+        <th>Disponibilitate</th>
+        <th>Acțiuni</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="angajat : ${angajati}">
+        <td th:text="${angajat.idAngajat}"></td>
+        <td th:text="${angajat.nume}"></td>
+        <td th:text="${angajat.prenume}"></td>
+        <td th:text="${angajat.specializare}"></td>
+        <td th:text="${angajat.email}"></td>
+        <td th:text="${angajat.disponibilitate ? 'Disponibil' : 'Indisponibil'}"></td>
+        <td>
+            <!-- Link pentru a merge la formularul de editare a angajatului -->
+            <a th:href="@{/employees/edit/{id}(id=${angajat.idAngajat})}">Modifică</a>
+
+            <!-- Formular pentru ștergerea angajatului -->
+            <form th:action="@{/employees/delete}" method="post" style="display:inline;" onsubmit="confirmDelete(event)">
+                <input type="hidden" name="employeeId" th:value="${angajat.idAngajat}" />
+                <button type="submit">Șterge</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/employees/add">Adaugă Angajat</a>
+<a href="/" class="btn-back-to-main">Întoarce-te la Meniul Principal</a>
+
+</body>
+</html>

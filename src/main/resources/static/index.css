@@ -1,0 +1,104 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8d0f0;  /* Culoare violet deschis pentru fundal */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Adăugăm un mic efect de umbră pentru titlu */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.button-container a {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #3498db;  /* Culoare de fundal albastră */
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efect de umbră pentru butoane */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+
+.button-container a:hover {
+    background-color: #2980b9;  /* Culoare mai închisă la hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Umbră mai mare la hover */
+    transform: translateY(-3px); /* Ușor ridicat la hover */
+}
+
+
+.button-container a:active {
+    transform: translateY(1px); /* Efect de apăsare a butonului */
+}
+
+
+header {
+    background-color: #34495e;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adăugăm o umbră subtilă */
+}
+
+header h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+
+nav {
+    background-color: #2c3e50;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Umbră pentru bara de navigare */
+}
+
+nav a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #1abc9c;  /* Culoare pentru hover */
+    font-size: 20px; /* Crește fontul la hover */
+}
+
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Umbră subtilă în partea de jos */
+}
+
+footer p {
+    margin: 0;
+}

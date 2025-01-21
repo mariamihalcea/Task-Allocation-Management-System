@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Clienților</title>
+    <link rel="stylesheet" type="text/css" href="/listare.css">
+    <script type="text/javascript">
+        function confirmDelete(event) {
+            event.preventDefault();
+
+            var confirmDelete = confirm("Sigur vrei să ștergi acest client?");
+
+            if (confirmDelete) {
+                event.target.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Lista Clienților</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Adresă</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Acțiuni</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clienti}">
+        <td th:text="${client.idClient}"></td>
+        <td th:text="${client.nume}"></td>
+        <td th:text="${client.prenume}"></td>
+        <td th:text="${client.adresa}"></td>
+        <td th:text="${client.telefon}"></td>
+        <td th:text="${client.email}"></td>
+        <td>
+            <!-- Link pentru a merge la formularul de editare a clientului -->
+            <a th:href="@{/clients/edit/{id}(id=${client.idClient})}">Editează</a> |
+            <!-- Formular pentru ștergerea clientului -->
+            <form th:action="@{/clients/delete}" method="post" style="display:inline;" onsubmit="confirmDelete(event)">
+                <input type="hidden" th:name="clientId" th:value="${client.idClient}"/>
+                <button type="submit">Șterge</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/clients/add">Adaugă Client</a>
+<a href="/" class="btn-back-to-main">Întoarce-te la Meniul Principal</a>
+
+</body>
+</html>

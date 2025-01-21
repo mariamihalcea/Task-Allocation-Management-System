@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionare Date</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], select {
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<h1>Gestionare Date</h1>
+
+<div>
+    <h2>Adăugare Angajat</h2>
+    <form action="/employees/add" method="post">
+        <label for="employeeName">Nume:</label>
+        <input type="text" id="employeeName" name="employeeName" required>
+        <span th:if="${errorNume}" th:text="${errorNume}" class="error"></span><br>
+
+        <label for="employeeSurname">Prenume:</label>
+        <input type="text" id="employeeSurname" name="employeeSurname" required>
+        <span th:if="${errorPrenume}" th:text="${errorPrenume}" class="error"></span><br>
+
+        <label for="specialization">Specializare:</label>
+        <input type="text" id="specialization" name="specialization" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="availability">Disponibilitate:</label>
+        <select id="availability" name="availability" required>
+            <option value="1">Disponibil</option>
+            <option value="0">Indisponibil</option>
+        </select><br>
+
+        <button type="submit">Adaugă Angajat</button>
+    </form>
+</div>
+
+</body>
+</html>

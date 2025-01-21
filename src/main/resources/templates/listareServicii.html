@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Serviciilor</title>
+    <link rel="stylesheet" type="text/css" href="/listare.css">
+    <script type="text/javascript">
+        function confirmDelete(event) {
+            event.preventDefault();
+
+
+            var confirmDelete = confirm("Sigur vrei să ștergi acest serviciu?");
+
+            if (confirmDelete) {
+                event.target.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>Lista Serviciilor</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Denumire</th>
+        <th>Descriere</th>
+        <th>Preț</th>
+        <th>Acțiuni</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="serviciu : ${servicii}">
+        <td th:text="${serviciu.denumire}"></td>
+        <td th:text="${serviciu.descriere}"></td>
+        <td th:text="${serviciu.pret}"></td>
+        <td>
+            <!-- Formular pentru ștergerea serviciului -->
+            <form th:action="@{/services/delete}" method="post" style="display:inline;" onsubmit="confirmDelete(event)">
+                <input type="hidden" name="idServiciu" th:value="${serviciu.idServiciu}" />
+                <button type="submit">Șterge</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/services/add">Adaugă Serviciu</a>
+<a href="/" class="btn-back-to-main">Întoarce-te la Meniul Principal</a>
+
+</body>
+</html>

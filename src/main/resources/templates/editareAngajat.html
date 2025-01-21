@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifică Angajat</title>
+    <link rel="stylesheet" type="text/css" href="/editare.css">
+</head>
+<body>
+
+<h1>Modifică Angajat</h1>
+
+<form action="/employees/edit" method="post">
+    <!-- Câmp pentru ID-ul angajatului (care nu este vizibil pentru utilizator, dar este necesar pentru actualizare) -->
+    <input type="hidden" name="employeeId" th:value="${angajat.idAngajat}"/>
+
+    <!-- Câmp pentru nume -->
+    <label for="employeeName">Nume:</label>
+    <input type="text" id="employeeName" name="employeeName" th:value="${angajat.nume}" required/><br>
+
+    <!-- Câmp pentru prenume -->
+    <label for="employeeSurname">Prenume:</label>
+    <input type="text" id="employeeSurname" name="employeeSurname" th:value="${angajat.prenume}" required/><br>
+
+    <!-- Câmp pentru specializare -->
+    <label for="specialization">Specializare:</label>
+    <input type="text" id="specialization" name="specialization" th:value="${angajat.specializare}" required/><br>
+
+    <!-- Câmp pentru email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:value="${angajat.email}" required/><br>
+
+    <!-- Câmp pentru disponibilitate -->
+    <label for="availability">Disponibilitate:</label>
+    <select id="availability" name="availability" required>
+        <option value="1" th:selected="${angajat.disponibilitate} == true">Disponibil</option>
+        <option value="0" th:selected="${angajat.disponibilitate} == false">Indisponibil</option>
+    </select><br>
+
+    <button type="submit">Salvează modificările</button>
+</form>
+
+
+</body>
+</html>
